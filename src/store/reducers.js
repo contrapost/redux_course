@@ -4,11 +4,7 @@
  */
 import Constants from '../constants';
 
-export const goal = (state = 10, action) => {
-    if(action.type === Constants.SET_GOAL) {
-        return parseInt(action.payload);
-    } else {
-        return state
-    }
-};
+export const goal = (state = 10, action) => (action.type === Constants.SET_GOAL) ?  parseInt(action.payload) : state;
+
+export const skiDay = (state = null, action) => (action.type === Constants.ADD_DAY) ? action.payload : state;
 
