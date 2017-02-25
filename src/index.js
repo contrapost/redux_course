@@ -7,11 +7,21 @@ import Constants from './constants';
 import appReducer from './store/reducers';
 import { createStore } from 'redux';
 
-const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {};
-const store = createStore(appReducer, initialState);
+const store = createStore(appReducer);
 
-window.store = store;
+const unsubscribeGoalLogger = store.subscribe(() => console.log(`     Goal: ${store.getState().goal}`) );
 
-store.subscribe(() => console.log(store.getState()) );
+setInterval(() => {
 
-store.subscribe(() => localStorage['redux-store'] = JSON.stringify(store.getState()) );
+    store.dispatch({
+        type: Constants.SET_GOAL,
+        payload: Math.floor(Math.random() * 100)
+    });
+
+}, 250);
+
+setTimeout(() => {
+
+    unsubscribeGoalLogger();
+
+}, 3000);
