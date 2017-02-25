@@ -7,7 +7,7 @@ import Constants from './constants';
 export function addDay(resort, date, powder = false, backcountry = false) {
     return {
         type: Constants.ADD_DAY,
-        payload: { resort, date, powder, backcountry }
+        payload: {resort, date, powder, backcountry}
     }
 }
 
@@ -51,3 +51,23 @@ export function clearSuggestions() {
         type: Constants.CLEAR_SUGGESTIONS,
     }
 }
+
+export const randomGoals = () => (dispatch, getState) => {
+
+    if (!getState().resortNames.fetching) {
+
+        dispatch({
+            type: Constants.FETCH_RESORT_NAMES
+        });
+
+        setTimeout(() => {
+
+            dispatch({
+                type: Constants.CANCEL_FETCHING
+            });
+
+        }, 1500)
+
+    }
+
+};

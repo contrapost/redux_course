@@ -11,7 +11,8 @@ import { addDay,
     addError,
     clearError,
     changeSuggestions,
-    clearSuggestions
+    clearSuggestions,
+    randomGoals
 } from './actions';
 
 const store = storeFactory();
@@ -94,3 +95,7 @@ console.log(`
     clearSuggestions() Action Creator Works!!!
 
 `);
+
+store.dispatch(
+  randomGoals()
+);
