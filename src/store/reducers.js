@@ -8,3 +8,15 @@ export const goal = (state = 10, action) => (action.type === Constants.SET_GOAL)
 
 export const skiDay = (state = null, action) => (action.type === Constants.ADD_DAY) ? action.payload : state;
 
+export const errors = (state = [], action) => {
+
+    switch(action.type) {
+
+        case Constants.ADD_ERROR:
+            return [...state, action.payload];
+
+        default:
+            return state
+    }
+};
+
