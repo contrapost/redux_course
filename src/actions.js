@@ -24,3 +24,30 @@ export function setGoal(goal) {
         payload: goal
     }
 }
+
+export function addError(error) {
+    return {
+        type: Constants.ADD_ERROR,
+        payload: error
+    }
+}
+
+export function clearError(index) {
+    return {
+        type: Constants.CLEAR_ERROR,
+        payload: index
+    }
+}
+
+export function changeSuggestions(suggestions) {
+    return {
+        type: Constants.CHANGE_SUGGESTIONS,
+        payload: suggestions
+    }
+}
+
+export function clearSuggestions() {
+    return {
+        type: Constants.CLEAR_SUGGESTIONS,
+    }
+}
