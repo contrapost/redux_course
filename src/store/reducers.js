@@ -15,6 +15,9 @@ export const errors = (state = [], action) => {
         case Constants.ADD_ERROR:
             return [...state, action.payload];
 
+        case Constants.CLEAR_ERROR:
+            return state.filter((message, i) => i !== action.payload);
+
         default:
             return state
     }

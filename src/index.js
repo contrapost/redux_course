@@ -12,8 +12,8 @@ const state = [
 ];
 
 const action = {
-    type: Constants.ADD_ERROR,
-    payload: "cannot connect to server"
+    type: Constants.CLEAR_ERROR,
+    payload: 0
 };
 
 const nextState = errors(state, action);
