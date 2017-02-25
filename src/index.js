@@ -5,21 +5,13 @@
 
 import Constants from './constants';
 import appReducer from './store/reducers';
-import initialState from './initialState.json';
 import { createStore } from 'redux';
 
+const initialState = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : {};
 const store = createStore(appReducer, initialState);
 
-console.log('initial state', store.getState());
+window.store = store;
 
-store.dispatch({
-    type: Constants.ADD_DAY,
-    payload: {
-        "resort": "Mt Shasta",
-        "date": "2016-10-28",
-        "powder": false,
-        "backcountry": true
-    }
-});
+store.subscribe(() => console.log(store.getState()) );
 
-console.log('next state', store.getState());
+store.subscribe(() => localStorage['redux-store'] = JSON.stringify(store.getState()) );
