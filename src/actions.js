@@ -34,10 +34,10 @@ export function addError(error) {
 }
 
 export function clearError(index) {
-    return {
+    return ({
         type: Constants.CLEAR_ERROR,
         payload: index
-    }
+    })
 }
 
 export function changeSuggestions(suggestions) {
