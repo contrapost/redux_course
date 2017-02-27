@@ -12,7 +12,8 @@ import { addDay,
     clearError,
     changeSuggestions,
     clearSuggestions,
-    randomGoals
+    randomGoals,
+    suggestResortNames
 } from './actions';
 
 const store = storeFactory();
@@ -29,10 +30,7 @@ store.dispatch(
     setGoal(101)
 );
 
-//
 // Challenge: build addError() Action Creator
-//
-
 store.dispatch(
     addError("something went wrong")
 );
@@ -46,10 +44,7 @@ console.log(`
 
 `);
 
-//
 // Challenge: build clearError() Action Creator
-//
-
 store.dispatch(
     clearError(0)
 );
@@ -63,11 +58,7 @@ console.log(`
 
 `);
 
-
-//
 // Challenge: build changeSuggestios() Action Creator
-//
-
 store.dispatch(
     changeSuggestions(['One', 'Two', 'Three'])
 );
@@ -81,11 +72,7 @@ console.log(`
 
 `);
 
-
-//
 // Challenge: build clearSuggestions() Action Creator
-//
-
 store.dispatch(clearSuggestions());
 
 expect(store.getState().resortNames.suggestions).toEqual([]);
@@ -98,4 +85,8 @@ console.log(`
 
 store.dispatch(
   randomGoals()
+);
+
+store.dispatch(
+    suggestResortNames('hea')
 );

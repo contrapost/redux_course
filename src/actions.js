@@ -3,6 +3,7 @@
  *
  */
 import Constants from './constants';
+import fetch from 'isomorphic-fetch';
 
 export function addDay(resort, date, powder = false, backcountry = false) {
     return {
@@ -69,5 +70,33 @@ export const randomGoals = () => (dispatch, getState) => {
         }, 1500)
 
     }
+
+};
+
+export const suggestResortNames = value => dispatch => {
+
+    dispatch({
+        type: Constants.FETCH_RESORT_NAMES
+    });
+
+    fetch("http://localhost:3333/resorts/" + value)
+        .then(response => response.json())
+        .then(suggestions => {
+
+            dispatch({
+                type: Constants.CHANGE_SUGGESTIONS,
+                payload: suggestions
+            });
+        })
+        .catch(error => {
+
+            dispatch(
+                addError(error.message)
+            );
+
+            dispatch({
+                type: Constants.CANCEL_FETCHING
+            });
+        });
 
 };
