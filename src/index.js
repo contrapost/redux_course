@@ -31,7 +31,7 @@ store.subscribe(saveState);
 window.React = React;
 window.store = store;
 
-window.addEventListener("error", handleError);
+//window.addEventListener("error", handleError);
 
 render(
     <Provider store={store}>{routes}</Provider>,
